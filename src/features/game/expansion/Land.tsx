@@ -5,10 +5,11 @@ import { Section, useScrollIntoView } from "lib/utils/hooks/useScrollIntoView";
 import pebble from "assets/resources/small_stone.png";
 import shrub from "assets/resources/green_bush.png";
 import plantableSoil from "assets/land/soil2.png";
-import { MapPlacement } from "./components/MapPlacement";
 import { useActor } from "@xstate/react";
 import { Context } from "../GameProvider";
 import { getTerrainImageByKey } from "../lib/getTerrainImageByKey";
+import { MapPlacement, Position } from "./components/MapPlacement";
+import { Pebble } from "./components/resources/pebble";
 
 export const Land: React.FC = () => {
   const { gameService } = useContext(Context);
@@ -17,7 +18,6 @@ export const Land: React.FC = () => {
       context: { state },
     },
   ] = useActor(gameService);
-
   const { pebbles, shrubs, terrains, plots } = state;
 
   const [scrollIntoView] = useScrollIntoView();
@@ -48,6 +48,7 @@ export const Land: React.FC = () => {
         {Object.values(pebbles).map(({ x, y, width, height }, index) => (
           <MapPlacement key={index} x={x} y={y} height={height} width={width}>
             <img src={pebble} className="h-full w-full" />
+            <Pebble pebbleIndex={0} />
           </MapPlacement>
         ))}
         {/* Example placement of terrains */}
