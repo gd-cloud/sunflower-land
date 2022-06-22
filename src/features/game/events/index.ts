@@ -12,6 +12,7 @@ import { feedChicken, FeedAction } from "./feedChicken";
 
 import { GameState } from "../types/game";
 import { trade, TradeAction } from "./trade";
+import { PebbleStrikeAction, strikePebble } from "./pebbleStrike";
 
 export type GameEvent =
   | CraftAction
@@ -25,7 +26,8 @@ export type GameEvent =
   | OpenRewardAction
   | CollectAction
   | FeedAction
-  | TradeAction;
+  | TradeAction
+  | PebbleStrikeAction;
 
 type EventName = Extract<GameEvent, { type: string }>["type"];
 
@@ -53,4 +55,5 @@ export const EVENTS: Handlers = {
   "chicken.collectEgg": collectEggs,
   "chicken.feed": feedChicken,
   "item.traded": trade,
+  "pebble.struck": strikePebble,
 };
