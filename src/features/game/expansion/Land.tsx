@@ -2,13 +2,12 @@ import React, { useContext, useLayoutEffect } from "react";
 import genesisBlock from "assets/land/levels/1.png";
 import { GRID_WIDTH_PX } from "../lib/constants";
 import { Section, useScrollIntoView } from "lib/utils/hooks/useScrollIntoView";
-import pebble from "assets/resources/small_stone.png";
 import shrub from "assets/resources/green_bush.png";
 import plantableSoil from "assets/land/soil2.png";
 import { useActor } from "@xstate/react";
 import { Context } from "../GameProvider";
 import { getTerrainImageByKey } from "../lib/getTerrainImageByKey";
-import { MapPlacement, Position } from "./components/MapPlacement";
+import { MapPlacement } from "./components/MapPlacement";
 import { Pebble } from "./components/resources/pebble";
 
 export const Land: React.FC = () => {
@@ -47,7 +46,6 @@ export const Land: React.FC = () => {
         {/* Example placement of pebbles */}
         {Object.values(pebbles).map(({ x, y, width, height }, index) => (
           <MapPlacement key={index} x={x} y={y} height={height} width={width}>
-            <img src={pebble} className="h-full w-full" />
             <Pebble pebbleIndex={0} />
           </MapPlacement>
         ))}
