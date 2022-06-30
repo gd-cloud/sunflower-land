@@ -8,7 +8,7 @@ import { useActor } from "@xstate/react";
 import { Context } from "../GameProvider";
 import { getTerrainImageByKey } from "../lib/getTerrainImageByKey";
 import { MapPlacement } from "./components/MapPlacement";
-import { Pebble } from "./components/resources/pebble";
+import { Pebble } from "./components/resources/Pebble";
 
 export const Land: React.FC = () => {
   const { gameService } = useContext(Context);
