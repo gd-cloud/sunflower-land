@@ -8,7 +8,7 @@ import { MapPlacement } from "./components/MapPlacement";
 import { useActor } from "@xstate/react";
 import { Context } from "../GameProvider";
 import { getTerrainImageByKey } from "../lib/getTerrainImageByKey";
-import { Shrub } from "./components/resources/shrub";
+import { Shrub } from "./components/resources/Shrub";
 
 export const Land: React.FC = () => {
   const { gameService } = useContext(Context);
