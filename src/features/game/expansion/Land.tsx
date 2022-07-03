@@ -9,6 +9,7 @@ import { MapPlacement } from "./components/MapPlacement";
 import { useActor } from "@xstate/react";
 import { Context } from "../GameProvider";
 import { getTerrainImageByKey } from "../lib/getTerrainImageByKey";
+import { WaterDecoration } from "./components/water/WaterDecoration";
 
 export const Land: React.FC = () => {
   const { gameService } = useContext(Context);
@@ -31,13 +32,24 @@ export const Land: React.FC = () => {
       style={{ width: `${GRID_WIDTH_PX * 8}px` }}
       className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
     >
-      <div className="relative w-full h-full">
+      <div
+        className="relative w-full h-full"
+        style={{
+          height: "370px",
+        }}
+      >
         <img
           id="genesisBlock"
           src={genesisBlock}
           alt="land"
           className="w-full"
         />
+        {/*
+        The show prop receives an array of positions to show,
+        Example: there are blocks of terrain on top and bottom hence those positions should be hidden
+        just pass ["left", "right"] to show only sides.
+        */}
+        <WaterDecoration show={["all"]} />
         {/* Example placement of shrub */}
         {Object.values(shrubs).map(({ x, y, width, height }, index) => (
           <MapPlacement key={index} x={x} y={y} height={height} width={width}>
